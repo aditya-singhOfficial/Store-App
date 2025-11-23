@@ -1,24 +1,23 @@
 import React, { createContext, useEffect, useState } from "react";
 import api from "./Axios";
-const ProudctContext = createContext();
+export const ProductContext = createContext();
 
 const Context = (props) => {
-  const [product, setProduct] = useState(null);
+  const [products, setProducts] = useState(null);
 
   const getProducts = async () => {
-    const data = await api.get("/products");
-    setProduct(data.data);
-    console.log(data.data);
+    const data = await api.get(`/products`);
+    setProducts(data.data);
   };
 
   useEffect(() => {
     getProducts();
-  },[]);
+  }, []);
 
   return (
-    <ProudctContext.Provider value={product}>
+    <ProductContext.Provider value={[products, setProducts]}>
       {props.children}
-    </ProudctContext.Provider>
+    </ProductContext.Provider>
   );
 };
 
