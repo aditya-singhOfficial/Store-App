@@ -25,7 +25,7 @@ const Details = () => {
 
   return product ? (
     <>
-      <div className="w-[80%] items-center justify-center h-screen py-6 flex flex-wrap flex-col gap-4">
+      <div className="w-[80%] border-l border-gray-300 items-center justify-center h-screen py-6 flex flex-wrap flex-col gap-4">
         <div className="w-11/12 min-h-[50%] flex items-center justify-center gap-10">
           <img className="w-[19%]" src={product.image} alt="" />
           <div className="flex flex-col gap-2 max-w-[65%]">

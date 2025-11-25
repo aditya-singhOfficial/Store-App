@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import ProductsSection from "../components/ProductsSection";
 import Details from "../components/Details";
 import Category from "../components/Category";
+import AddProduct from "../components/AddProduct";
 
 const Routing = () => {
   return (
@@ -9,6 +10,7 @@ const Routing = () => {
       <Route path="/" element={<ProductsSection />} />
       <Route path="/products/:id" element={<Details />} />
       <Route path="/category" element={<Category />} />
+      <Route path="/add-product" element={<AddProduct />} />
     </Routes>
   );
 };

@@ -17,7 +17,7 @@ const Navbar = () => {
       <nav className="w-[20%] h-full px-4 py-6">
         <Link
           className="py-2 px-4 border-2 border-blue-200 text-blue-500 rounded-md hover:bg-blue-300 hover:text-white transition-colors duration-200"
-          to="/"
+          to="/add-product"
         >
           Add a Product
         </Link>
