@@ -65,7 +65,7 @@ const Details = () => {
             </h1>
             <div className=" w-full flex gap-6 mt-4">
               <Link
-                to={`/edit/${id}`}
+                to={`/edit-product/${id}`}
                 className="py-2 px-4 border-2 border-blue-200 text-blue-500 rounded-md hover:bg-blue-300 hover:text-white transition-colors duration-200"
               >
                 Edit

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 import { ProductContext } from "../utils/Context";
 import { nanoid } from "nanoid";
 
@@ -30,11 +30,11 @@ const AddProduct = () => {
       return;
     }
     if (
-      !(url.length > 4) ||
-      !(title.length > 4) ||
-      !(category.length > 4) ||
-      !(price > 0) ||
-      !(description.length > 4)
+      url.length <= 4 ||
+      title.length <= 3 ||
+      category.length <= 3 ||
+      price <= 0 ||
+      description.length <= 3
     ) {
       toast.error("Field Must Contain a Value of Minimum Length of 4!", {
         position: "top-center",
@@ -49,7 +49,6 @@ const AddProduct = () => {
       });
       return;
     }
-    console.log(data);
     const product = {
       id: nanoid(),
       image: url,
@@ -123,9 +122,10 @@ const AddProduct = () => {
               ></textarea>
             </div>
             <div className="w-full flex justify-center items-center">
-              <button className="py-2 px-4 border-2 border-blue-200 text-blue-500 rounded-md hover:bg-blue-300 hover:text-white transition-colors duration-200 cursor-pointer">
-                Save Product
-              </button>
+              <input
+                type="Submit"
+                className="py-2 px-4 border-2 border-blue-200 text-blue-500 rounded-md hover:bg-blue-300 hover:text-white transition-colors duration-200 cursor-pointer"
+              />
             </div>
           </form>
         </div>
