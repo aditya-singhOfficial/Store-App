@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { ProductContext } from "../utils/Context";
+import { nanoid } from "nanoid";
 
 const AddProduct = () => {
   const navigate = useNavigate();
+  const [products, setProducts] = useContext(ProductContext);
   const { register, handleSubmit } = useForm();
 
   const handleFormSubmit = (data) => {
@@ -47,6 +50,17 @@ const AddProduct = () => {
       return;
     }
     console.log(data);
+    const product = {
+      id: nanoid(),
+      image: url,
+      title,
+      category,
+      price,
+      description,
+    };
+
+    setProducts([...products, product]);
+    localStorage.setItem("products", JSON.stringify([...products, product]));
     toast.success("Product Added Successfully!", {
       position: "top-center",
       autoClose: 5000,
@@ -116,19 +130,6 @@ const AddProduct = () => {
           </form>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition={Bounce}
-      />
     </>
   );
 };

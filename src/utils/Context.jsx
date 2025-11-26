@@ -3,7 +3,7 @@ import api from "./Axios";
 export const ProductContext = createContext();
 
 const Context = (props) => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState(JSON.parse(localStorage.getItem("products"))||null);
 
   const getProducts = async () => {
     const data = await api.get(`/products`);
@@ -11,7 +11,8 @@ const Context = (props) => {
   };
 
   useEffect(() => {
-    getProducts();
+    if(!products)
+      getProducts();
   }, []);
 
   return (

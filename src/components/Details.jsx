@@ -2,26 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "./Loader";
-import api from '../utils/Axios'
+import api from "../utils/Axios";
 const Details = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [products] = useContext(ProductContext);
-  console.log(id);
+  const [products, setProducts] = useContext(ProductContext);
+
   const [product, setProduct] = useState(null);
 
   const getProduct = async () => {
-      const data= await api.get(`/products/${id}`);
-      console.log(data.data);
-      setProduct(data.data)
-    }
-  
+    const data = await api.get(`/products/${id}`);
+    console.log(data.data);
+    setProduct(data.data);
+  };
 
   useEffect(() => {
-    getProduct();
-  }, [products]);
-
-  console.log(product);
+    // getProduct();
+    if (!product) {
+      setProduct(products.filter((item) => item.id == id)[0]);
+    }
+  }, []);
 
   return product ? (
     <>
@@ -38,8 +38,8 @@ const Details = () => {
               {product.category}
             </h1>
             <h1 className="text-md capitalize">
-              <span className="font-semibold text-2xl">price:</span>{" "}
-              ${product.price}
+              <span className="font-semibold text-2xl">price:</span> $
+              {product.price}
             </h1>
             <h1 className="text-md capitalize">
               <span className="font-semibold text-2xl">description: </span>

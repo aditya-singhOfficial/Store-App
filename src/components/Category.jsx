@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { useLocation, useNavigate } from "react-router-dom";
 import api from "../utils/Axios";
 import Loader from "./Loader";
+import { ProductContext } from "../utils/Context";
 
 const Category = () => {
   const navigate = useNavigate();
+  const [products, setProducts] = useContext(ProductContext);
   const { search } = useLocation();
   const category = search.split("=")[1];
   const productCategory = decodeURIComponent(category);
@@ -17,7 +19,12 @@ const Category = () => {
   };
 
   useEffect(() => {
-    if (productCategory) getCategory();
+    // if (productCategory) getCategory();
+    if (productCategory) {
+      setProductCategorydata(
+        products.filter((item) => item.category == productCategory)
+      );
+    }
   }, [productCategory]);
 
   return productCategoryData ? (
