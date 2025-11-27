@@ -33,6 +33,11 @@ const EditProduct = () => {
       toast.warn("Please Fill Out All The Fields!", {
         position: "top-center",
         autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
         theme: "dark",
         transition: Bounce,
       });
@@ -40,14 +45,19 @@ const EditProduct = () => {
     }
     if (
       image.length <= 4 ||
-      title.length <= 3 ||
-      category.length <= 3 ||
-      price <= 0 ||
-      description.length <= 3
+      title.length < 3 ||
+      category.length < 3 ||
+      price < 0 ||
+      description.length < 3
     ) {
       toast.error("Invalid Input: Check lengths and price!", {
         position: "top-center",
         autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
         theme: "dark",
         transition: Bounce,
       });
@@ -60,17 +70,18 @@ const EditProduct = () => {
       }
       return item;
     });
-
-    setProducts(updatedProductsArray);
-
-    console.log("Updated Data submitted:", data);
-
     toast.success("Product Updated Successfully!", {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
       theme: "dark",
       transition: Bounce,
     });
+    setProducts(updatedProductsArray);
 
     navigate(-1);
   };
@@ -78,8 +89,8 @@ const EditProduct = () => {
   return (
     product && (
       <>
-        <div className="w-[80%] border-l border-gray-300 h-screen py-6 flex justify-center items-center">
-          <div className=" w-2/3 p-2">
+        <div className="lg:w-[80%] w-full border-l border-gray-300 lg:h-screen py-6 flex justify-center items-center">
+          <div className="w-[95%] lg:w-2/3 p-2">
             <h1 className="font-semibold text-3xl">Edit Product</h1>
             <form
               onSubmit={handleSubmit(handleFormSubmit)}

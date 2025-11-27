@@ -30,13 +30,13 @@ const AddProduct = () => {
       return;
     }
     if (
-      url.length <= 4 ||
-      title.length <= 3 ||
-      category.length <= 3 ||
+      url.trim().length <= 4 ||
+      title.trim().length < 3 ||
+      category.trim().length < 3 ||
       price <= 0 ||
-      description.length <= 3
+      description.trim().length < 3
     ) {
-      toast.error("Field Must Contain a Value of Minimum Length of 4!", {
+      toast.error("Field Must Contain a Value of Minimum Length!", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -75,8 +75,8 @@ const AddProduct = () => {
   };
   return (
     <>
-      <div className="w-[80%] border-l border-gray-300 h-screen py-6 flex justify-center items-center">
-        <div className=" w-2/3 p-2">
+      <div className="lg:w-[80%] w-full border-l border-gray-300 lg:h-screen py-6 flex justify-center items-center">
+        <div className=" lg:w-2/3 w-[94%] p-2">
           <h1 className="font-semibold text-3xl">Add A Product</h1>
           <form
             onSubmit={handleSubmit((data) => handleFormSubmit(data))}

@@ -7,7 +7,7 @@ const ProductsSection = () => {
   
   return products ? (
     <>
-      <div className="w-[80%] h-screen py-6 overflow-x-hidden overflow-y-auto flex flex-wrap gap-4 justify-around">
+      <div className="w-full h-full lg:w-[80%] lg:h-screen py-6 overflow-x-hidden overflow-y-auto flex flex-wrap gap-4 justify-around">
         {products.map((item, index) => (
           <ProductCard product={item} key={index} />
         ))}

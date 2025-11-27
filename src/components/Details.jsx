@@ -35,6 +35,12 @@ const Details = () => {
   };
 
   useEffect(() => {
+    if (products.length > 0) {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+  }, [products]);
+
+  useEffect(() => {
     // getProduct();
     if (!product) {
       setProduct(products.filter((item) => item.id == id)[0]);
@@ -43,10 +49,10 @@ const Details = () => {
 
   return product ? (
     <>
-      <div className="w-[80%]  border-l border-gray-300 items-center justify-center h-screen py-6 flex flex-wrap flex-col gap-4">
-        <div className="w-11/12  min-h-[50%] flex items-center justify-center gap-10">
-          <img className="w-[20%]" src={product.image} alt="" />
-          <div className="flex flex-col gap-2 max-w-[65%]">
+      <div className="lg:w-[80%] w-full  border-l border-gray-300 items-center justify-center lg:h-screen py-6 flex flex-wrap flex-col gap-4">
+        <div className="lg:w-11/12 w-full  min-h-[50%] flex flex-col lg:flex-row items-center justify-center gap-10">
+          <img className="lg:w-[20%] w-[40%]" src={product.image} alt="" />
+          <div className="flex flex-col gap-2 lg:w-[65%] w-[90%]">
             <h1 className="text-md capitalize">
               <span className="font-semibold text-2xl">title:</span>{" "}
               {product.title}
@@ -63,7 +69,7 @@ const Details = () => {
               <span className="font-semibold text-2xl">description: </span>
               {product.description}
             </h1>
-            <div className=" w-full flex gap-6 mt-4">
+            <div className=" w-full flex gap-6 lg:mt-4 ">
               <Link
                 to={`/edit-product/${id}`}
                 className="py-2 px-4 border-2 border-blue-200 text-blue-500 rounded-md hover:bg-blue-300 hover:text-white transition-colors duration-200"
@@ -81,7 +87,7 @@ const Details = () => {
         </div>
         <button
           onClick={() => navigate(-1)}
-          className="py-2 px-4 border-2 border-blue-200 text-blue-500 rounded-md text-2xl hover:bg-blue-500 hover:text-white transition-colors duration-200 cursor-pointer"
+          className="py-2 px-4 mt-4 border-2 border-blue-200 text-blue-500 rounded-md text-2xl hover:bg-blue-500 hover:text-white transition-colors duration-200 cursor-pointer"
         >
           Back
         </button>

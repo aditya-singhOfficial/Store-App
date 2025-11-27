@@ -8,7 +8,6 @@ import { Bounce, ToastContainer } from "react-toastify";
 createRoot(document.getElementById("root")).render(
   <Context>
     <BrowserRouter>
-      <App />
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -22,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         theme="dark"
         transition={Bounce}
       />
+      <App />
     </BrowserRouter>
   </Context>
 );

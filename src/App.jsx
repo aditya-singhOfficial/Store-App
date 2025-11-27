@@ -7,7 +7,7 @@ import Routing from "./utils/Routing";
 
 const App = () => {
   return (
-    <div className="w-full h-screen flex">
+    <div className="w-full h lg:h-screen flex flex-col lg:flex-row">
       <Navbar />
       {/* <ProductsSection /> */}
       <Routing />
